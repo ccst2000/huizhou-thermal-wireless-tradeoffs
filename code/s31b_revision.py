@@ -796,8 +796,9 @@ P("Across 29 traditional Huizhou villages, settlement morphology is associated w
 H1("Declarations")
 P("**Data Availability.** The full analysis code, the village-level analysis table (all twelve "
   "morphological metrics, four performance variables, and four-phase coverage detail), the Landsat "
-  "scene manifest, and the figure scripts are deposited at [GitHub repository URL to be inserted] and "
-  "archived at [Zenodo DOI to be inserted]. Public input datasets are cited in the References.")
+  "scene manifest, and the figure scripts are deposited at "
+  "https://github.com/ccst2000/huizhou-thermal-wireless-tradeoffs and "
+  "archived at https://doi.org/10.5281/zenodo.22011593. Public input datasets are cited in the References.")
 P("**Author Contributions (CRediT).** Lei Zhang: conceptualization, methodology, software, formal "
   "analysis, investigation, data curation, writing—original draft, writing—review and editing, "
   "visualization, project administration. [Additional authors and roles to be inserted if applicable.]")
