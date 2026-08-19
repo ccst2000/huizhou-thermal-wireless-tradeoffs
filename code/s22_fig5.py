@@ -13,8 +13,10 @@ from scipy import stats
 plt.rcParams.update({"font.size": 9, "axes.linewidth": 0.8})
 
 m = pd.read_csv("data/v3_master.csv")
-m = m.merge(pd.read_csv("data/lst_village_v2.csv"), on="village") \
+m = m.merge(pd.read_csv("data/lst_village_v3.csv"), on="village") \
      .merge(pd.read_csv("data/built_domain_area.csv"), on="village")
+q_tab = pd.read_csv("tables/TableA3_exact_stats.csv")
+q_tab = q_tab[q_tab.family == "F1 raw"].set_index(["metric", "target"])
 
 panels = [
     ("tsvf", "lst_v2", "Topographic openness (tSVF)", "Village summer LST (°C)", "ext"),
@@ -58,7 +60,14 @@ for ax, (x, y, xl, yl, mode), lab in zip(axes.flat, panels, labels):
                     xytext=(dxpt, dypt), ha=ha, fontsize=7.5, color="0.15", zorder=4)
 
     sig = "p < 0.001" if p < 0.001 else f"p = {p:.3f}"
-    ax.text(0.03, 0.97, f"({lab})  ρ = {r:+.2f}, {sig}, n = {len(d)}",
+    qv = float(q_tab.loc[(x, y), "q"]) if (x, y) in q_tab.index else np.nan
+    if not np.isfinite(qv):
+        qs = ""
+    elif qv < 0.001:
+        qs = ", q < 0.001"
+    else:
+        qs = f", q = {qv:.3f}"
+    ax.text(0.03, 0.97, f"({lab})  ρ = {r:+.2f}, {sig}{qs}, n = {len(d)}",
             transform=ax.transAxes, va="top", ha="left", fontsize=9, fontweight="bold")
     ax.set_xlabel(xl)
     ax.set_ylabel(yl)
@@ -70,8 +79,6 @@ hs = [plt.scatter([], [], s=25 + 5.0 * v, c="white", edgecolors="0.25")
 fig.legend(hs, ["5 ha", "25 ha", "50 ha"], title="Built-up area in 500-m domain",
            loc="lower center", ncol=4, frameon=False, fontsize=8,
            title_fontsize=8.5, bbox_to_anchor=(0.5, -0.005))
-fig.suptitle("Morphology-driven trade-offs: thermal environment vs. wireless coverage",
-             fontsize=11, y=0.995)
-fig.tight_layout(rect=[0, 0.035, 1, 0.98])
+fig.tight_layout(rect=[0, 0.035, 1, 1.0])
 fig.savefig("figures/Fig5_tradeoff.png", dpi=300, bbox_inches="tight")
 print("saved figures/Fig5_tradeoff.png")

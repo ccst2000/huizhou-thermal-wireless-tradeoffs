@@ -1,0 +1,93 @@
+﻿family,metric,target,rho,p,q,ci_lo,ci_hi,n,survive_fdr
+F1 raw,built_dom_ha,lst_v2,0.568,0.001299,0.0057,0.255,0.774,29,True
+F1 raw,built_dom_ha,dlst_v3,0.426,0.021158,0.0564,0.071,0.686,29,False
+F1 raw,built_dom_ha,cov85_4p,0.473,0.009479,0.0284,0.129,0.716,29,True
+F1 raw,built_dom_ha,rsrp_p10_4p,0.332,0.078157,0.1631,-0.039,0.623,29,False
+F1 raw,elong_fd,lst_v2,-0.085,0.667755,0.8013,-0.444,0.298,28,False
+F1 raw,elong_fd,dlst_v3,0.122,0.536085,0.6955,-0.263,0.474,28,False
+F1 raw,elong_fd,cov85_4p,-0.318,0.098582,0.182,-0.618,0.062,28,False
+F1 raw,elong_fd,rsrp_p10_4p,-0.22,0.261707,0.3926,-0.548,0.167,28,False
+F1 raw,compact_fd,lst_v2,-0.271,0.162273,0.2686,-0.585,0.113,28,False
+F1 raw,compact_fd,dlst_v3,-0.16,0.414948,0.6036,-0.503,0.226,28,False
+F1 raw,compact_fd,cov85_4p,-0.328,0.088834,0.1716,-0.624,0.052,28,False
+F1 raw,compact_fd,rsrp_p10_4p,-0.406,0.032225,0.0773,-0.676,-0.038,28,False
+F1 raw,elev_m,lst_v2,-0.621,0.000323,0.0017,-0.805,-0.33,29,True
+F1 raw,elev_m,dlst_v3,-0.486,0.00756,0.0242,-0.723,-0.145,29,True
+F1 raw,elev_m,cov85_4p,0.069,0.722955,0.8148,-0.305,0.425,29,False
+F1 raw,elev_m,rsrp_p10_4p,0.085,0.659303,0.8013,-0.29,0.438,29,False
+F1 raw,relief_m,lst_v2,-0.674,6.1e-05,0.0005,-0.834,-0.408,29,True
+F1 raw,relief_m,dlst_v3,-0.43,0.019886,0.0561,-0.688,-0.075,29,False
+F1 raw,relief_m,cov85_4p,-0.637,0.000201,0.0014,-0.814,-0.353,29,True
+F1 raw,relief_m,rsrp_p10_4p,-0.561,0.001532,0.0061,-0.77,-0.245,29,True
+F1 raw,slope_deg,lst_v2,-0.347,0.065246,0.1424,-0.633,0.022,29,False
+F1 raw,slope_deg,dlst_v3,-0.124,0.522706,0.6955,-0.469,0.254,29,False
+F1 raw,slope_deg,cov85_4p,-0.846,0.0,0.0,-0.926,-0.695,29,True
+F1 raw,slope_deg,rsrp_p10_4p,-0.744,4e-06,0.0001,-0.873,-0.519,29,True
+F1 raw,southness,lst_v2,-0.075,0.699474,0.8148,-0.43,0.3,29,False
+F1 raw,southness,dlst_v3,-0.221,0.248886,0.3854,-0.544,0.158,29,False
+F1 raw,southness,cov85_4p,-0.025,0.897623,0.9167,-0.388,0.345,29,False
+F1 raw,southness,rsrp_p10_4p,0.064,0.742306,0.8148,-0.31,0.42,29,False
+F1 raw,ns_asym_m,lst_v2,-0.303,0.109501,0.1947,-0.603,0.071,29,False
+F1 raw,ns_asym_m,dlst_v3,-0.268,0.159421,0.2686,-0.578,0.109,29,False
+F1 raw,ns_asym_m,cov85_4p,-0.142,0.463165,0.6352,-0.483,0.237,29,False
+F1 raw,ns_asym_m,rsrp_p10_4p,0.099,0.609252,0.7696,-0.278,0.449,29,False
+F1 raw,tsvf,lst_v2,0.597,0.000622,0.003,0.296,0.791,29,True
+F1 raw,tsvf,dlst_v3,0.321,0.089392,0.1716,-0.051,0.615,29,False
+F1 raw,tsvf,cov85_4p,0.692,3.2e-05,0.0003,0.436,0.844,29,True
+F1 raw,tsvf,rsrp_p10_4p,0.621,0.000321,0.0017,0.33,0.805,29,True
+F1 raw,forest_ring_pct,lst_v2,-0.253,0.203394,0.3254,-0.577,0.141,27,False
+F1 raw,forest_ring_pct,dlst_v3,0.055,0.785469,0.8378,-0.332,0.426,27,False
+F1 raw,forest_ring_pct,cov85_4p,-0.805,0.0,0.0,-0.908,-0.613,27,True
+F1 raw,forest_ring_pct,rsrp_p10_4p,-0.759,4e-06,0.0001,-0.884,-0.533,27,True
+F1 raw,water_mean_m,lst_v2,-0.509,0.00667,0.0229,-0.745,-0.16,27,True
+F1 raw,water_mean_m,dlst_v3,-0.373,0.055281,0.1264,-0.66,0.008,27,False
+F1 raw,water_mean_m,cov85_4p,-0.046,0.81959,0.8552,-0.419,0.34,27,False
+F1 raw,water_mean_m,rsrp_p10_4p,0.003,0.986734,0.9867,-0.377,0.383,27,False
+F1 raw,water_min_m,lst_v2,-0.528,0.004604,0.017,-0.757,-0.186,27,True
+F1 raw,water_min_m,dlst_v3,-0.417,0.030667,0.0773,-0.688,-0.043,27,False
+F1 raw,water_min_m,cov85_4p,-0.157,0.434202,0.613,-0.507,0.237,27,False
+F1 raw,water_min_m,rsrp_p10_4p,-0.065,0.746935,0.8148,-0.434,0.323,27,False
+F2 partial (ctrl domain built-up),elong_fd,lst_v2,0.008,0.968356,0.9684,-0.366,0.38,28,False
+F2 partial (ctrl domain built-up),elong_fd,dlst_v3,0.202,0.302138,0.4584,-0.185,0.535,28,False
+F2 partial (ctrl domain built-up),elong_fd,cov85_4p,-0.274,0.157612,0.3152,-0.587,0.11,28,False
+F2 partial (ctrl domain built-up),elong_fd,rsrp_p10_4p,-0.183,0.351024,0.4982,-0.521,0.204,28,False
+F2 partial (ctrl domain built-up),compact_fd,lst_v2,-0.383,0.044506,0.1399,-0.661,-0.011,28,False
+F2 partial (ctrl domain built-up),compact_fd,dlst_v3,-0.213,0.277029,0.4353,-0.543,0.174,28,False
+F2 partial (ctrl domain built-up),compact_fd,cov85_4p,-0.408,0.030918,0.1115,-0.678,-0.042,28,False
+F2 partial (ctrl domain built-up),compact_fd,rsrp_p10_4p,-0.45,0.016362,0.0654,-0.705,-0.092,28,False
+F2 partial (ctrl domain built-up),elev_m,lst_v2,-0.548,0.002102,0.0132,-0.761,-0.227,29,True
+F2 partial (ctrl domain built-up),elev_m,dlst_v3,-0.397,0.03295,0.1115,-0.667,-0.036,29,False
+F2 partial (ctrl domain built-up),elev_m,cov85_4p,0.284,0.134854,0.2826,-0.092,0.589,29,False
+F2 partial (ctrl domain built-up),elev_m,rsrp_p10_4p,0.229,0.233075,0.4021,-0.151,0.549,29,False
+F2 partial (ctrl domain built-up),relief_m,lst_v2,-0.49,0.006913,0.0338,-0.726,-0.151,29,True
+F2 partial (ctrl domain built-up),relief_m,dlst_v3,-0.226,0.238183,0.4021,-0.547,0.153,29,False
+F2 partial (ctrl domain built-up),relief_m,cov85_4p,-0.494,0.006474,0.0338,-0.729,-0.155,29,True
+F2 partial (ctrl domain built-up),relief_m,rsrp_p10_4p,-0.481,0.008226,0.0362,-0.721,-0.139,29,True
+F2 partial (ctrl domain built-up),slope_deg,lst_v2,-0.008,0.965669,0.9684,-0.374,0.359,29,False
+F2 partial (ctrl domain built-up),slope_deg,dlst_v3,0.183,0.342112,0.4982,-0.197,0.515,29,False
+F2 partial (ctrl domain built-up),slope_deg,cov85_4p,-0.797,0.0,0.0,-0.901,-0.609,29,True
+F2 partial (ctrl domain built-up),slope_deg,rsrp_p10_4p,-0.722,1e-05,0.0001,-0.861,-0.483,29,True
+F2 partial (ctrl domain built-up),southness,lst_v2,-0.156,0.419595,0.5595,-0.494,0.223,29,False
+F2 partial (ctrl domain built-up),southness,dlst_v3,-0.289,0.1277,0.2825,-0.593,0.086,29,False
+F2 partial (ctrl domain built-up),southness,cov85_4p,-0.079,0.685159,0.8148,-0.433,0.296,29,False
+F2 partial (ctrl domain built-up),southness,rsrp_p10_4p,0.035,0.856665,0.8975,-0.336,0.396,29,False
+F2 partial (ctrl domain built-up),ns_asym_m,lst_v2,-0.292,0.124676,0.2825,-0.595,0.084,29,False
+F2 partial (ctrl domain built-up),ns_asym_m,dlst_v3,-0.244,0.20167,0.3697,-0.561,0.134,29,False
+F2 partial (ctrl domain built-up),ns_asym_m,cov85_4p,-0.1,0.605371,0.7399,-0.45,0.277,29,False
+F2 partial (ctrl domain built-up),ns_asym_m,rsrp_p10_4p,0.146,0.448898,0.5809,-0.233,0.487,29,False
+F2 partial (ctrl domain built-up),tsvf,lst_v2,0.354,0.059443,0.1744,-0.014,0.638,29,False
+F2 partial (ctrl domain built-up),tsvf,dlst_v3,0.052,0.787146,0.8659,-0.32,0.411,29,False
+F2 partial (ctrl domain built-up),tsvf,cov85_4p,0.573,0.001158,0.0092,0.261,0.776,29,True
+F2 partial (ctrl domain built-up),tsvf,rsrp_p10_4p,0.57,0.001256,0.0092,0.257,0.774,29,True
+F2 partial (ctrl domain built-up),forest_ring_pct,lst_v2,-0.058,0.772498,0.8659,-0.429,0.329,27,False
+F2 partial (ctrl domain built-up),forest_ring_pct,dlst_v3,0.231,0.246741,0.4021,-0.164,0.562,27,False
+F2 partial (ctrl domain built-up),forest_ring_pct,cov85_4p,-0.775,2e-06,0.0,-0.892,-0.56,27,True
+F2 partial (ctrl domain built-up),forest_ring_pct,rsrp_p10_4p,-0.772,2e-06,0.0,-0.891,-0.555,27,True
+F2 partial (ctrl domain built-up),water_mean_m,lst_v2,-0.353,0.070517,0.1825,-0.647,0.031,27,False
+F2 partial (ctrl domain built-up),water_mean_m,dlst_v3,-0.256,0.197504,0.3697,-0.58,0.137,27,False
+F2 partial (ctrl domain built-up),water_mean_m,cov85_4p,0.166,0.408726,0.5595,-0.229,0.513,27,False
+F2 partial (ctrl domain built-up),water_mean_m,rsrp_p10_4p,0.111,0.582102,0.7318,-0.281,0.471,27,False
+F2 partial (ctrl domain built-up),water_min_m,lst_v2,-0.359,0.065922,0.1813,-0.65,0.024,27,False
+F2 partial (ctrl domain built-up),water_min_m,dlst_v3,-0.3,0.128422,0.2825,-0.61,0.09,27,False
+F2 partial (ctrl domain built-up),water_min_m,cov85_4p,0.055,0.78622,0.8659,-0.332,0.426,27,False
+F2 partial (ctrl domain built-up),water_min_m,rsrp_p10_4p,0.043,0.829937,0.8907,-0.342,0.417,27,False

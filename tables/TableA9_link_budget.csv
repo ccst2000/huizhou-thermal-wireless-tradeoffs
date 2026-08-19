@@ -1,0 +1,4 @@
+﻿village,site,d2D_m,d3D_m,dBP_m,link,PL_LOS_dB,PL_NLOS_dB,PL_used_dB,EPRE_dBm,RSRP_dBm
+Hongcun 宏村,V0615,404,405,2450,LOS,94.0,114.2,94.0,30.2,-63.8
+Huansha 环砂,V0757,1048,1048,2450,LOS,103.4,130.3,103.4,30.2,-73.2
+Zuyuan 祖源,V1438,99,103,2450,LOS,81.4,91.2,81.4,30.2,-51.2

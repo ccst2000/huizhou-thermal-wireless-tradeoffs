@@ -28,8 +28,9 @@ ls = LightSource(azdeg=315, altdeg=45)
 hs = ls.hillshade(dem_s, vert_exag=2.0, dx=res * step, dy=res * step)
 
 m = pd.read_csv("data/v3_master.csv")
-m = m.merge(pd.read_csv("data/lst_village_v2.csv"), on="village") \
-     .merge(pd.read_csv("data/built_domain_area.csv"), on="village")
+m = m.merge(pd.read_csv("data/lst_village_v3.csv"), on="village") \
+     .merge(pd.read_csv("data/built_domain_area.csv"), on="village") \
+     .merge(pd.read_csv("data/morphology_framed.csv")[["village", "elong_fd", "compact_fd"]], on="village")
 tf = Transformer.from_crs(4326, 32650, always_xy=True)
 mx, my = zip(*[tf.transform(lo, la) for lo, la in zip(m.lon, m.lat)])
 mx, my = np.array(mx), np.array(my)
@@ -65,7 +66,7 @@ sc = ax.scatter(mx, my, c=m.forest_ring_pct, s=14 + 4.0 * m.built_dom_ha,
 fig.colorbar(sc, ax=ax, label="%", orientation="horizontal", shrink=0.62, pad=0.03)
 
 ax = fig.add_subplot(gs[2])
-vars_ = [("built_dom_ha", "Built-up area (domain)"), ("elong", "Elongation"), ("compact", "Compactness"),
+vars_ = [("built_dom_ha", "Built-up (domain)"), ("elong_fd", "Elongation"), ("compact_fd", "Compactness"),
          ("relief_m", "Relief"), ("slope_deg", "Slope"), ("tsvf", "tSVF"),
          ("forest_ring_pct", "Forest ring"), ("water_min_m", "Water dist.")]
 Z = []
@@ -83,7 +84,9 @@ ax.set_yticks(pos)
 ax.set_yticklabels([n for _, n in vars_], fontsize=8.5)
 ax.axvline(0, color="0.6", lw=0.7, ls="--")
 ax.set_xlabel("Standardized value (z-score)")
-ax.set_title("(c) Metric distributions (n = 29)", fontsize=10, loc="left", fontweight="bold")
+ax.set_title("(c) Metric distributions", fontsize=10, loc="left", fontweight="bold")
+ax.text(1.0, 1.04, "n = 29; n = 28 for Elongation, Compactness; n = 27 for Forest ring",
+        transform=ax.transAxes, ha="right", va="bottom", fontsize=7, color="0.35")
 fig.savefig("figures/Fig2_morphology.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
 print("Fig2 saved")
@@ -118,13 +121,15 @@ ax.legend(fontsize=8, frameon=False, loc="upper left")
 ax.set_title("(b) Village vs. background LST", fontsize=10, loc="left", fontweight="bold")
 
 ax = fig.add_subplot(gs[2])
-dl = m.dlst_v2.dropna()
+dl = m.dlst_v3.dropna()
+n_sig = int((m.ci_lo > 0).sum())
 bins = np.arange(0.0, 7.5, 0.5)
 cnt, _, _ = ax.hist(dl, bins=bins, color="#e67e22", edgecolor="white", lw=0.7)
 ax.axvline(dl.mean(), color="k", lw=1.2, ls="--")
 ax.text(dl.mean() + 0.08, ax.get_ylim()[1] * 0.86, f"mean = +{dl.mean():.1f} °C", fontsize=8.5)
 ax.text(0.03, 0.92, f"n = {len(dl)}, bin width = 0.5 °C", transform=ax.transAxes, fontsize=8)
-ax.set_xlabel("ΔLST (village − background, °C)")
+ax.text(0.03, 0.82, f"{n_sig}/{len(dl)} villages: bootstrap 95% CI > 0", transform=ax.transAxes, fontsize=8)
+ax.set_xlabel("ΔLST scene-matched (village − background, °C)")
 ax.set_ylabel("Villages")
 ax.set_title("(c) Heat anomaly distribution", fontsize=10, loc="left", fontweight="bold")
 print(f"Fig3c histogram: total count = {int(cnt.sum())} (must be 29), mean = {dl.mean():.2f}")

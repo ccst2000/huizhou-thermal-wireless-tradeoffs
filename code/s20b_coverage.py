@@ -13,9 +13,10 @@ import pandas as pd
 import rasterio
 
 FC = float(sys.argv[3]) if len(sys.argv) > 3 else 2.6  # GHz（敏感性：0.7）
+NLOS_CAP = len(sys.argv) > 4 and sys.argv[4] == "nlos5k"  # TR 38.901 RMa NLOS 适用上限 5km 截断变体
 HB, HUT = 30.0, 1.5                   # 站高 m, 用户高 m
 H_ENV, W_ENV = 5.0, 20.0              # RMa 乡村建筑高/街宽
-EIRP = 46 - 10 * math.log10(1200) + 17 - 2   # =30.21 dBm (EPRE，带宽无关)
+EIRP = 46 - 10 * math.log10(1200) + 17 - 2   # =30.21 dBm (per-RE EPRE，见手稿 2.4)
 COV_TH = -95.0                        # 基本覆盖门限 dBm
 COV_TH_GOOD = -85.0                   # 良好覆盖门限 dBm（可靠数据业务）
 R_ASSIGN = 10000.0                    # 站-村分配半径 m
@@ -88,7 +89,10 @@ def rma_pl(d2d, los):
                - (24.37 - 3.7 * (H_ENV / HB) ** 2) * math.log10(HB)
                + (43.42 - 3.1 * math.log10(HB)) * (np.log10(d3d) - 3)
                + 20 * math.log10(FC) - (3.2 * (math.log10(11.75 * HUT)) ** 2 - 4.97))
-    return np.where(los, pl_los, np.maximum(pl_los, pl_nlos))
+    pl = np.where(los, pl_los, np.maximum(pl_los, pl_nlos))
+    if NLOS_CAP:  # RMa NLOS 标准适用范围 d2D ≤ 5 km；超出视为不适用（不给连接）
+        pl = np.where((~los) & (d2d > 5000.0), np.inf, pl)
+    return pl
 
 
 # ---------- 3. 视线路径判定（站→目标点集，向量化步进）----------
@@ -144,9 +148,10 @@ def village_targets(cx, cy):
 
 # ---------- 5. 逐村覆盖 ----------
 f_tag = "" if abs(FC - 2.6) < 1e-9 else f"_f{FC:g}"
+v_tag = "_nlos5k" if NLOS_CAP else ""
 sts = make_stations(dx_phase, dy_phase)
-sts.to_csv(f"data/stations_p{int(dx_phase)}_{int(dy_phase)}{f_tag}.csv", index=False)
-print(f"stations: {len(sts)} (phase dx={dx_phase}, dy={dy_phase}, fc={FC} GHz)")
+sts.to_csv(f"data/stations_p{int(dx_phase)}_{int(dy_phase)}{f_tag}{v_tag}.csv", index=False)
+print(f"stations: {len(sts)} (phase dx={dx_phase}, dy={dy_phase}, fc={FC} GHz, nlos_cap={NLOS_CAP})")
 
 rows = []
 for i, v in df.iterrows():
@@ -169,7 +174,7 @@ for i, v in df.iterrows():
     print(f"{v.village:28s} cov85={cov85:5.1f}%  cov95={cov95:5.1f}%  rsrp={best.mean():6.1f}  p10={np.percentile(best,10):6.1f}  sites={len(near):3d} tgt={len(tx):4d}")
 
 out = pd.DataFrame(rows)
-out.to_csv(f"data/coverage_p{int(dx_phase)}_{int(dy_phase)}{f_tag}.csv", index=False)
+out.to_csv(f"data/coverage_p{int(dx_phase)}_{int(dy_phase)}{f_tag}{v_tag}.csv", index=False)
 
 # ---------- 6. 与旧结果对比 ----------
 try:
