@@ -13,7 +13,8 @@ from rasterio.transform import from_origin
 from rasterio.windows import from_bounds
 from pyproj import Transformer
 
-V2 = "../v2-paper/data"
+from v3_inputs import dem_tile, wc_tile
+
 df = pd.read_csv("data/v3_master.csv")
 tf = Transformer.from_crs(4326, 32650, always_xy=True)
 vxy = np.array([tf.transform(lo, la) for lo, la in zip(df.lon, df.lat)])
@@ -31,7 +32,7 @@ print(f"UTM grid: {W} x {H} = {W*H/1e6:.1f}M px, left={left:.0f} top={top:.0f}")
 dem = np.full((H, W), np.nan, dtype="float32")
 for n in (29, 30):
     for e in (117, 118):
-        p = f"{V2}/dem_N{n}E{e}.tif"
+        p = dem_tile(n, e)
         with rasterio.open(p) as s:
             src = s.read(1).astype("float32")
             if s.nodata is not None:
@@ -50,7 +51,7 @@ lon1, lat1 = inv.transform(right, top)
 pad = 0.03
 built = np.zeros((H, W), dtype="uint8")
 for n in (27, 30):
-    p = f"{V2}/wc_N{n}E117.tif"
+    p = wc_tile(n, 117)
     with rasterio.open(p) as s:
         b = s.bounds  # 必须先裁剪到瓦片范围内，越界窗口会导致 GDAL 行错位
         l0, r1 = max(lon0 - pad, b.left), min(lon1 + pad, b.right)

@@ -1,4 +1,4 @@
-﻿village,site,d2D_m,d3D_m,dBP_m,link,PL_LOS_dB,PL_NLOS_dB,PL_used_dB,EPRE_dBm,RSRP_dBm
-Hongcun 宏村,V0615,404,405,2450,LOS,94.0,114.2,94.0,30.2,-63.8
-Huansha 环砂,V0757,1048,1048,2450,LOS,103.4,130.3,103.4,30.2,-73.2
-Zuyuan 祖源,V1438,99,103,2450,LOS,81.4,91.2,81.4,30.2,-51.2
+﻿village,site,surface_z_site_m,surface_z_target_m,ant_abs_site_m,ant_abs_target_m,d2D_m,delta_z_m,d3D_m,dBP_m,link,PL_LOS_dB,PL_NLOS_dB,PL_used_dB,EPRE_dBm,RSRP_dBm
+Hongcun 宏村,V0615,356.4,300.8,386.4,302.3,404,84.0,412,2450,LOS,94.2,114.6,94.2,30.21,-64.0
+Huansha 环砂,V0757,227.0,141.1,257.0,142.6,1048,114.3,1054,2450,LOS,103.4,130.4,103.4,30.21,-73.2
+Zuyuan 祖源,V1438,480.7,452.2,510.7,453.7,99,57.1,114,2450,LOS,82.4,92.9,82.4,30.21,-52.1

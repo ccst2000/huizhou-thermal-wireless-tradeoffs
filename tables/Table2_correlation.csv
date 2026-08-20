@@ -1,24 +1,32 @@
 ﻿Morphological metric,rho LST,rho dLST-matched,rho cov85,rho RSRP p10
-Built-up area (domain),+0.61***†,+0.50**†,+0.47**,+0.35
+Built-up area (domain),+0.58**†,+0.48**†,+0.52**†,+0.37
+Building coverage ratio,+0.65***†,+0.56**†,+0.42*,+0.31
+Building coverage ratio (ctrl size),+0.37*,+0.34,-0.14,-0.06
 Elongation,-0.12,-0.02,-0.33,-0.24
-Elongation (ctrl size),-0.03,+0.07,-0.28,-0.20
+Elongation (ctrl size),-0.01,+0.09,-0.26,-0.19
 Compactness,-0.19,-0.07,-0.36,-0.41*
-Compactness (ctrl size),-0.30,-0.13,-0.44*,-0.46*
-Elevation,-0.56**†,-0.28,+0.07,+0.06
-Elevation (ctrl size),-0.46*,-0.13,+0.28,+0.21
-Relief,-0.71***†,-0.45*†,-0.66***†,-0.59***†
-Relief (ctrl size),-0.53**,-0.20,-0.52**,-0.50**
-Slope,-0.38*,-0.07,-0.85***†,-0.77***†
-Slope (ctrl size),-0.03,+0.33,-0.80***†,-0.75***†
-Southness,-0.13,-0.07,-0.01,+0.07
-Southness (ctrl size),-0.23,-0.13,-0.06,+0.04
-N-S asymmetry,-0.24,-0.17,-0.13,+0.08
-N-S asymmetry (ctrl size),-0.22,-0.13,-0.09,+0.13
-tSVF,+0.65***†,+0.32,+0.71***†,+0.65***†
-tSVF (ctrl size),+0.42*,-0.03,+0.59***,+0.59***†
-Forest ring,-0.36,-0.00,-0.81***†,-0.78***†
-Forest ring (ctrl size),-0.17,+0.26,-0.79***†,-0.78***†
-Water dist. (mean),-0.50**†,-0.40*,-0.06,-0.02
-Water dist. (mean) (ctrl size),-0.31,-0.21,+0.15,+0.10
-Water dist. (min),-0.54**†,-0.48*†,-0.17,-0.10
-Water dist. (min) (ctrl size),-0.35,-0.29,+0.04,+0.02
+Compactness (ctrl size),-0.23,-0.08,-0.41*,-0.43*
+Edge density,-0.48*†,-0.41*,-0.22,-0.10
+Edge density (ctrl size),-0.11,-0.09,+0.28,+0.23
+Patch density,-0.42*,-0.47*†,-0.26,-0.10
+Patch density (ctrl size),+0.00,-0.20,+0.22,+0.23
+Largest-patch share,+0.48*†,+0.51**†,+0.08,-0.02
+Largest-patch share (ctrl size),+0.23,+0.33,-0.30,-0.27
+Elevation,-0.62***†,-0.31,-0.00,+0.00
+Elevation (ctrl size),-0.51**,-0.14,+0.28,+0.19
+Relief,-0.59***†,-0.23,-0.77***†,-0.71***†
+Relief (ctrl size),-0.36,+0.10,-0.66***†,-0.66***†
+Slope,-0.52**†,-0.18,-0.82***†,-0.77***†
+Slope (ctrl size),-0.24,+0.18,-0.74***†,-0.75***†
+Southness,-0.29,-0.17,-0.12,+0.12
+Southness (ctrl size),-0.38*,-0.21,-0.16,+0.12
+N-S asymmetry,-0.32,-0.12,-0.18,+0.05
+N-S asymmetry (ctrl size),-0.34,-0.10,-0.17,+0.09
+Terrain-horizon openness (tSVF),+0.55**,+0.31,+0.64***†,+0.61***†
+Terrain-horizon openness (tSVF) (ctrl size),+0.26,-0.03,+0.45*,+0.53**†
+Forest ring,-0.58***†,-0.17,-0.65***†,-0.60***†
+Forest ring (ctrl size),-0.44*,+0.07,-0.54**†,-0.52**†
+Water distance (mean),-0.42*,-0.26,-0.17,-0.14
+Water distance (mean) (ctrl size),-0.27,-0.09,+0.04,-0.01
+Water distance (min),-0.61***†,-0.49**†,-0.16,-0.04
+Water distance (min) (ctrl size),-0.39*,-0.28,+0.26,+0.26

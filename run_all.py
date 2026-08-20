@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
-"""run_all.py — convenience runner for the v4 reproducibility pipeline.
+"""run_all.py — convenience runner for the v5 reproducibility pipeline.
 Executes the analysis chain in the README run order, skipping steps whose
 sentinel output already exists (safe to re-run; downloads are cached).
 
 Usage:  python run_all.py            # run everything (skips existing products)
         python run_all.py --force    # re-run everything
+
+Sentinels are real pipeline products (no marker-flag files). The per-frame
+Landsat steps (s40) are self-skipping: scenes already present under
+data/lst_v2_scenes/ are not re-downloaded, so they are listed without a
+sentinel and effectively no-op on re-runs.
 """
 import os
 import subprocess
@@ -15,12 +20,13 @@ PY = sys.executable
 
 # (script, args, sentinel output relative to repo root)
 STEPS = [
-    ("code/s20a_build_grids.py", [], "data/_grids_done.flag"),
-    ("code/s40_lst_v2.py", ["120039"], "data/_lst_120039.flag"),
-    ("code/s40_lst_v2.py", ["120040"], "data/_lst_120040.flag"),
-    ("code/s40_lst_v2.py", ["121039"], "data/_lst_121039.flag"),
-    ("code/s40_lst_v2.py", ["121040"], "data/_lst_121040.flag"),
-    ("code/s40_lst_v2.py", ["combine"], "data/_lst_combine.flag"),
+    ("code/s00_grid_ref.py", [], "data/lst_grid_ref.tif"),
+    ("code/s20a_build_grids.py", [], "data/dem_utm30.tif"),
+    ("code/s40_lst_v2.py", ["120039"], None),
+    ("code/s40_lst_v2.py", ["120040"], None),
+    ("code/s40_lst_v2.py", ["121039"], None),
+    ("code/s40_lst_v2.py", ["121040"], None),
+    ("code/s40_lst_v2.py", ["combine"], "data/lst_scene_manifest.csv"),
     ("code/s56_thermal_v4.py", [], "data/lst_village_v4.csv"),
     ("code/s59_lst_composite_v4.py", [], "data/lst_summer_median_v4.tif"),
     ("code/s20b_coverage_v4.py", ["0", "0"], "data/coverage_p0_0_v4.csv"),
@@ -38,16 +44,26 @@ STEPS = [
     ("code/s21_phase_aggregate_v4.py", [], "data/v3_master_v4.csv"),
     ("code/s10_morph_terrain.py", [], "data/morphology_terrain_v4.csv"),
     ("code/s58_dsm_crosscheck.py", [], "tables/TableA10_dsm_crosscheck.csv"),
-    ("code/s55_framed_morph.py", [], "data/morphology_framed.csv"),
-    ("code/s41d_stats_v4.py", [], "data/stats_v4.json"),
-    ("code/s52_calib_linkbudget.py", [], None),
+    ("code/s62_fabric_metrics.py", [], "data/morphology_fabric_v5.csv"),
+    ("code/s63_master_v5.py", [], "data/v3_master_v5.csv"),
+    ("code/s64_thermal_diagnostics.py", [], "tables/TableA15_match_diagnostics.csv"),
+    ("code/s41e_stats_v5.py", [], "data/stats_v5.json"),
+    ("code/s52b_linkbudget_v5.py", [], "tables/TableA12_link_budget.csv"),
     ("code/s42_fig1_v4.py", [], "figures/Fig1_study_area_EN.png"),
-    ("code/s23_fig234_v4.py", [], "figures/Fig4_coverage.png"),
-    ("code/s22_fig5_v4.py", [], "figures/Fig5_tradeoff.png"),
+    ("code/s23_fig234_v5.py", [], "figures/Fig4_coverage.png"),
+    ("code/s22_fig5_v5.py", [], "figures/Fig5_tradeoff.png"),
     ("code/s60_unit_tests.py", [], None),
     ("code/s61_morph_robustness.py", [], "tables/TableA13_morph_robustness.csv"),
-    ("code/s31c_revision_v4.py", [], None),
+    ("code/s31d_manuscript_v5.py", [], "manuscript/V3_manuscript_full_v5.docx"),
+    ("code/s65_verify_v5.py", [], None),
 ]
+
+LEGACY = [
+    "code/s41d_stats_v4.py", "code/s31c_revision_v4.py", "code/s53_worldcover_calib.py",
+    "code/s54_morph_recompute.py", "code/s55_framed_morph.py",
+    "code/legacy_v3/s52_calib_linkbudget.py",
+]
+
 
 def main():
     force = "--force" in sys.argv[1:]
@@ -61,6 +77,7 @@ def main():
             print(f"[FAIL] {script} exited {r.returncode}; stopping.")
             sys.exit(r.returncode)
     print("ALL STEPS DONE")
+
 
 if __name__ == "__main__":
     main()

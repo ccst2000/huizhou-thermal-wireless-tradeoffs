@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 import rasterio
 
-with rasterio.open("data/lst_summer_mean.tif") as s:
+with rasterio.open("data/lst_grid_ref.tif") as s:
     profile = s.profile
     H, W = s.height, s.width
     tr = s.transform

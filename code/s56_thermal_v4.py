@@ -24,12 +24,13 @@ from rasterio.windows import from_bounds
 from pyproj import Transformer
 from scipy import stats
 
+from v3_inputs import wc_tile
+
 RNG = np.random.default_rng(7)
 B = 10000
-V2DAT = "../v2-paper/data"
 
 # ---------- 100m LST 网格 ----------
-with rasterio.open("data/lst_summer_mean.tif") as s:
+with rasterio.open("data/lst_grid_ref.tif") as s:
     H, W = s.height, s.width
     dst_tr = s.transform
     bounds = s.bounds
@@ -66,7 +67,7 @@ for code, name in [(10, "tree"), (50, "built"), (80, "water")]:
     acc = np.zeros((H, W), dtype="float64")
     cnt = np.zeros((H, W), dtype="float64")
     for n in (27, 30):
-        p = f"{V2DAT}/wc_N{n}E117.tif"
+        p = wc_tile(n, 117)
         with rasterio.open(p) as s:
             b = s.bounds
             l0, r1 = max(lon0 - pad, b.left), min(lon1 + pad, b.right)

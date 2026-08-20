@@ -13,7 +13,7 @@ import rasterio
 from rasterio.warp import reproject, Resampling
 from rasterio.windows import from_bounds
 
-REGION_TIF = "data/lst_summer_mean.tif"   # 目标网格（UTM/100m）
+REGION_TIF = "data/lst_grid_ref.tif"   # 目标网格（UTM/100m）
 SCENE_DIR = "data/lst_v2_scenes"
 os.makedirs(SCENE_DIR, exist_ok=True)
 
