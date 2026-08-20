@@ -1,0 +1,5 @@
+﻿item,statistic,value,detail
+WorldCover year (2020 vs 2021): cover_dom_pct,Spearman rho,0.957,MAD=4.59 pct-pts; n=29
+WorldCover year (2020 vs 2021): cover_dom_pct,mean abs diff (pct-pts),4.59,"same pipeline, esa-worldcover v100 vs v200"
+dLST-V1 DOY adjustment (within-village quadratic),Spearman rho (raw vs adjusted village means),0.977,max village shift=1.14 degC; n=29
+dLST-V1 DOY adjustment (within-village quadratic),max village mean shift (degC),1.14,overpass dates span multiple years/seasons

@@ -1,32 +1,32 @@
 ﻿Morphological metric,rho LST,rho dLST-matched,rho cov85,rho RSRP p10
-Built-up area (domain),+0.58**†,+0.48**†,+0.52**†,+0.37
+Built-up area (domain),+0.61***†,+0.50**†,+0.47**†,+0.35
 Building coverage ratio,+0.65***†,+0.56**†,+0.42*,+0.31
-Building coverage ratio (ctrl size),+0.37*,+0.34,-0.14,-0.06
+Building coverage ratio (ctrl size),+0.35,+0.42*,-0.23,-0.21
 Elongation,-0.12,-0.02,-0.33,-0.24
-Elongation (ctrl size),-0.01,+0.09,-0.26,-0.19
+Elongation (ctrl size),-0.03,+0.07,-0.28,-0.20
 Compactness,-0.19,-0.07,-0.36,-0.41*
-Compactness (ctrl size),-0.23,-0.08,-0.41*,-0.43*
-Edge density,-0.48*†,-0.41*,-0.22,-0.10
-Edge density (ctrl size),-0.11,-0.09,+0.28,+0.23
-Patch density,-0.42*,-0.47*†,-0.26,-0.10
-Patch density (ctrl size),+0.00,-0.20,+0.22,+0.23
-Largest-patch share,+0.48*†,+0.51**†,+0.08,-0.02
-Largest-patch share (ctrl size),+0.23,+0.33,-0.30,-0.27
-Elevation,-0.62***†,-0.31,-0.00,+0.00
-Elevation (ctrl size),-0.51**,-0.14,+0.28,+0.19
-Relief,-0.59***†,-0.23,-0.77***†,-0.71***†
-Relief (ctrl size),-0.36,+0.10,-0.66***†,-0.66***†
-Slope,-0.52**†,-0.18,-0.82***†,-0.77***†
-Slope (ctrl size),-0.24,+0.18,-0.74***†,-0.75***†
-Southness,-0.29,-0.17,-0.12,+0.12
-Southness (ctrl size),-0.38*,-0.21,-0.16,+0.12
-N-S asymmetry,-0.32,-0.12,-0.18,+0.05
-N-S asymmetry (ctrl size),-0.34,-0.10,-0.17,+0.09
-Terrain-horizon openness (tSVF),+0.55**,+0.31,+0.64***†,+0.61***†
-Terrain-horizon openness (tSVF) (ctrl size),+0.26,-0.03,+0.45*,+0.53**†
-Forest ring,-0.58***†,-0.17,-0.65***†,-0.60***†
-Forest ring (ctrl size),-0.44*,+0.07,-0.54**†,-0.52**†
-Water distance (mean),-0.42*,-0.26,-0.17,-0.14
-Water distance (mean) (ctrl size),-0.27,-0.09,+0.04,-0.01
-Water distance (min),-0.61***†,-0.49**†,-0.16,-0.04
-Water distance (min) (ctrl size),-0.39*,-0.28,+0.26,+0.26
+Compactness (ctrl size),-0.30,-0.13,-0.44*,-0.46*
+Edge density,+0.64***†,+0.53**†,+0.45*†,+0.34
+Edge density (ctrl size),+0.39*,+0.29,+0.23,+0.20
+Patch density,-0.05,-0.10,+0.05,+0.23
+Patch density (ctrl size),+0.12,+0.03,+0.17,+0.33
+Largest-patch share,+0.43*,+0.48**†,+0.05,-0.03
+Largest-patch share (ctrl size),+0.06,+0.23,-0.36,-0.33
+Elevation,-0.62***†,-0.29,-0.02,-0.03
+Elevation (ctrl size),-0.53**,-0.13,+0.19,+0.12
+Relief,-0.69***†,-0.27,-0.77***†,-0.71***†
+Relief (ctrl size),-0.54**†,+0.01,-0.69***†,-0.67***†
+Slope,-0.53**†,-0.13,-0.85***†,-0.83***†
+Slope (ctrl size),-0.28,+0.21,-0.80***†,-0.82***†
+Southness,-0.14,-0.07,+0.01,+0.25
+Southness (ctrl size),-0.28,-0.17,-0.06,+0.21
+N-S asymmetry,-0.12,-0.07,+0.01,+0.23
+N-S asymmetry (ctrl size),-0.19,-0.12,-0.01,+0.23
+Terrain-horizon openness (tSVF),+0.53**†,+0.25,+0.57**†,+0.52**†
+Terrain-horizon openness (tSVF) (ctrl size),+0.31,-0.01,+0.43*,+0.42*
+Forest ring,-0.68***†,-0.36,-0.74***†,-0.65***†
+Forest ring (ctrl size),-0.47**,-0.06,-0.64***†,-0.59***†
+Water distance (mean),-0.44*†,-0.29,-0.15,-0.18
+Water distance (mean) (ctrl size),-0.19,-0.05,+0.11,-0.00
+Water distance (min),-0.47*†,-0.32,-0.24,-0.25
+Water distance (min) (ctrl size),-0.17,-0.04,+0.05,-0.06

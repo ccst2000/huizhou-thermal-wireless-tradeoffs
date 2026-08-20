@@ -1,4 +1,4 @@
-village,n_scenes,n_l8,n_l9,year_min,year_max,frames
+﻿Village,Scenes (n),Landsat 8 (n),Landsat 9 (n),First year,Last year,WRS-2 path/row
 Hongcun 宏村,14,11,3,2019,2025,120/39;120/40
 Xidi 西递,6,5,1,2019,2025,120/39
 Lucun 卢村,13,11,2,2019,2025,120/39;120/40
