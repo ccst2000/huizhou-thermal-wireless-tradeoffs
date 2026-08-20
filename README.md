@@ -6,22 +6,29 @@ supporting data for the manuscript:
 > L. Zhang, *Thermal–Wireless Trade-Offs of Terrain-Constrained Settlement Morphology in Huizhou
 > Traditional Villages* (under review).
 
-All inputs are public datasets (Copernicus DEM GLO-30, ESA WorldCover 2021 v200, Landsat 8/9
-Collection-2 Level-2 via Microsoft Planetary Computer). No field data are used. The pipeline is
-deterministic; the only stochastic steps use fixed seeds (noted below).
+All inputs are public datasets (Copernicus DEM GLO-30, NASADEM, ESA WorldCover 2021 v200, Landsat 8/9
+Collection-2 Level-2 via Microsoft Planetary Computer, Esri World Imagery for Fig. 1 basemap only).
+No field data are used. The pipeline is deterministic; the only stochastic steps use fixed seeds
+(noted below).
+
+Release **v1.2.0** corresponds to the v4 analysis chain (post-revision): four-phase wireless
+aggregation with 3-D distance NLOS truncation, overpass-matched ΔLST with village-absolute LST,
+spatially robust statistics (Moran's I + Fisher CIs), and a scripted re-implementation audit of the
+morphology/terrain table (see *Morphology-table provenance* below). Superseded v3 scripts and data
+are retained under `code/legacy_v3/` and `data/legacy_v3/` for provenance only.
 
 ## Repository layout
 
 ```
-code/        analysis scripts (run order below)
+code/        analysis scripts (run order below); legacy_v3/ = superseded v3 scripts
 data/        village-level analysis tables, scene manifest, coverage results, statistics JSON
-tables/      Tables 1, 2 and Appendix Tables A1–A9 (CSV, UTF-8-BOM)
+tables/      Tables 1–3 and Appendix Tables A1–A13 (CSV, UTF-8-BOM)
 figures/     Figures 1–5 (PNG, 300 dpi)
 ```
 
 Large raster intermediates (30-m UTM DEM/built-up grids, Landsat per-scene stacks, Esri tiles) are
 **not** included; they are rebuilt automatically by `s20a_build_grids.py`, `s40_lst_v2.py`, and
-`s42_fig1.py` from the public sources above.
+`s42_fig1_v4.py` from the public sources above.
 
 ## Environment
 
@@ -33,58 +40,96 @@ Large raster intermediates (30-m UTM DEM/built-up grids, Landsat per-scene stack
 ## Run order
 
 ```bash
-python code/s20a_build_grids.py        # 30-m UTM DEM + WorldCover built-up grids (downloads via STAC)
-python code/s40_lst_v2.py 120039       # Landsat QA-masked per-scene stacks, per WRS frame
+python code/s20a_build_grids.py            # 30-m UTM DEM + WorldCover built-up grids (STAC downloads)
+python code/s40_lst_v2.py 120039           # Landsat QA-masked per-scene stacks, per WRS frame
 python code/s40_lst_v2.py 120040
 python code/s40_lst_v2.py 121039
 python code/s40_lst_v2.py 121040
-python code/s40_lst_v2.py combine      # frames -> lst_summer_median.tif, obs counts, lst_village_v2.csv
-python code/s20b_coverage.py 0 0           # coverage, grid phase (0,0), 2.6 GHz
-python code/s20b_coverage.py 1250 0        # phase (1250,0)
-python code/s20b_coverage.py 0 1250        # phase (0,1250)
-python code/s20b_coverage.py 1250 1250     # phase (1250,1250)
-python code/s20b_coverage.py 0 0 0.7       # 700 MHz sensitivity, all four phases
-python code/s20b_coverage.py 1250 0 0.7
-python code/s20b_coverage.py 0 1250 0.7
-python code/s20b_coverage.py 1250 1250 0.7
-python code/s20b_coverage.py 0 0 2.6 nlos5k  # NLOS 5-km truncation variant (phase 0,0)
-python code/s21_phase_aggregate.py     # four-phase village means -> v3_master.csv
-python code/s50_round2.py              # scene-matched dLST + bootstrap CIs, scene composition,
-                                       # NLOS-truncation sensitivity, 700-MHz four-phase table,
-                                       # full jackknife -> lst_village_v3.csv, dlst_scene_matrix.csv, ...
-python code/s53_worldcover_calib.py    # 10-m WorldCover per-village reconstruction + water ring shares
-python code/s54_morph_recompute.py     # Frame-O plan-form definitions, precise recompute (diagnostic)
-python code/s55_framed_morph.py        # Frame-D plan-form metrics -> morphology_framed.csv
-python code/s41c_stats_v3.py           # correlations, FDR families F1/F2, sensitivity batteries,
-                                       # stats_v3.json, Tables 1/2/A1/A3/A4/A5/A6/A7/A8
-python code/s41c2_spatial_v3.py        # Moran's I (UTM weights) + Fisher 95% CIs -> stats_v3.json, Table A5
-python code/s52_calib_linkbudget.py    # worked link budgets -> Table A9 (and definition calibration)
-python code/s42_fig1.py                # Fig. 1 (downloads Esri World Imagery tiles)
-python code/s23_fig234.py              # Figs. 2–4
-python code/s22_fig5.py                # Fig. 5
-python code/s31b_revision.py           # manuscript DOCX (plain single-column layout)
+python code/s40_lst_v2.py combine          # frames -> per-scene village LST extraction
+python code/s56_thermal_v4.py              # overpass-matched dLST (bootstrap seed=7, B=10000),
+                                           # village-absolute LST, composite inputs
+python code/s59_lst_composite_v4.py        # de-duplicated summer median LST composite (GeoTIFF)
+python code/s20b_coverage_v4.py 0 0            # coverage, grid phase (0,0), 2.6 GHz, NLOS-truncated
+python code/s20b_coverage_v4.py 1250 0         # phase (1250,0)
+python code/s20b_coverage_v4.py 0 1250         # phase (0,1250)
+python code/s20b_coverage_v4.py 1250 1250      # phase (1250,1250)
+python code/s20b_coverage_v4.py 0 0 0.7        # 700 MHz sensitivity, all four phases
+python code/s20b_coverage_v4.py 1250 0 0.7
+python code/s20b_coverage_v4.py 0 1250 0.7
+python code/s20b_coverage_v4.py 1250 1250 0.7
+python code/s20b_coverage_v4.py 0 0 2.6 nocap  # un-truncated NLOS variant (sensitivity), all phases
+python code/s20b_coverage_v4.py 1250 0 2.6 nocap
+python code/s20b_coverage_v4.py 0 1250 2.6 nocap
+python code/s20b_coverage_v4.py 1250 1250 2.6 nocap
+python code/s21_phase_aggregate_v4.py      # four-phase village means -> v3_master_v4.csv
+python code/s10_morph_terrain.py           # scripted re-implementation of morphology/terrain metrics
+python code/s58_dsm_crosscheck.py          # NASADEM vs COP-DEM cross-check (Table A11)
+python code/s55_framed_morph.py            # Frame-D plan-form metrics -> morphology_framed.csv
+python code/s41d_stats_v4.py               # correlations, FDR families, partial correlations,
+                                           # sensitivity batteries, Moran's I, stats_v4.json,
+                                           # Tables 1–3 / A1–A10
+python code/s52_calib_linkbudget.py        # worked link budgets (definition calibration)
+python code/s42_fig1_v4.py                 # Fig. 1 (downloads Esri World Imagery tiles)
+python code/s23_fig234_v4.py               # Figs. 2–4
+python code/s22_fig5_v4.py                 # Fig. 5
+python code/s60_unit_tests.py              # geometry/metric unit tests (no raster data needed)
+python code/s61_morph_robustness.py        # morphology re-implementation robustness (Table A13)
+python code/s31c_revision_v4.py            # manuscript DOCX (plain single-column layout)
 ```
 
-Expected runtime: ~3–5 h total, dominated by STAC downloads (first run) and the 700-MHz recomputation;
-all scripts cache downloads and are safe to re-run. Fixed seeds: scene bootstrap (`seed=7`),
-Moran's I permutations (`seed=7`), Fig. 2c jitter (`seed=7`).
+A convenience runner `run_all.py` executes these steps in order, skipping products that already
+exist. Expected runtime: ~3–5 h total, dominated by first-run STAC downloads and the 700-MHz
+recomputation; all scripts cache downloads and are safe to re-run.
+
+Fixed seeds: overpass-matched ΔLST bootstrap (`seed=7`, B = 10000) in `s56_thermal_v4.py`;
+spatial-permutation and bootstrap procedures (`seed=11`, B = 2999) and Moran's I (999 permutations)
+in `s41d_stats_v4.py`.
+
+## Morphology-table provenance (honest statement)
+
+`data/morphology_table.csv` is the village-level morphology/terrain input **as used in the published
+analysis** (elevation, relief, slope, sky-view factor, ring forest share, water proximity, domain
+built-up area). It was produced during an earlier project phase from a raster processing state
+(DEM mosaic and window definition) that could not be fully recovered afterwards, so the published
+numbers are retained as the analysis input of record.
+
+To make this auditable rather than opaque, `code/s10_morph_terrain.py` provides a fully scripted
+re-implementation of every metric from the public rasters (documented window/ring definitions).
+The re-implementation correlates with the published table at Spearman ρ = 0.84–0.98 for elevation,
+relief, slope, sky-view factor, ring forest share and water proximity (aspect-derived metrics and
+domain built-up area are lower, ~0.5–0.9, owing to the unrecoverable preprocessing state).
+`code/s61_morph_robustness.py` then substitutes the re-implemented metrics into the analysis table
+and re-runs all 18 headline correlations: **every sign and substantive conclusion is preserved**
+(`tables/TableA13_morph_robustness.csv`). The paper's findings are therefore insensitive, at the
+rank level, to the morphology-chain implementation.
 
 ## Key data files
 
-- `data/v3_master.csv` — 29 villages × morphological metrics + four-phase performance variables
-- `data/lst_village_v3.csv` — village LST plus scene-matched ΔLST with bootstrap 95% CI and P(ΔLST > 0)
-- `data/dlst_scene_matrix.csv` — per-village per-scene scene-matched anomalies (29 × 36)
-- `data/morphology_framed.csv` — Frame-D plan-form metrics (elongation, compactness) used in the paper
-- `data/morphology_v2.csv`, `data/morph_calib_10m.csv` — Frame-O recompute and cross-version
-  calibration diagnostics (document why the Frame-O shape metrics were retired)
-- `data/built_domain_area.csv` — domain-clipped vs connected-component built-up areas (the two spatial frames)
-- `data/coverage_p*.csv` — per-phase village coverage (`_f0.7` = 700 MHz, `_nlos5k` = NLOS truncation)
-- `data/coverage_700mhz_4phase.csv` — 700-MHz four-phase village coverage (Appendix Table A6)
+- `data/v3_master_v4.csv` — 29 villages × morphological metrics + four-phase performance variables
+- `data/morphology_table.csv` — published morphology/terrain input (see provenance note above)
+- `data/morphology_terrain_v4.csv` — scripted re-implementation of the same metrics (`s10`)
+- `data/lst_village_v4.csv` — village overpass-matched ΔLST with bootstrap 95% CI and P(ΔLST > 0)
+- `data/lst_abs_village_v4.csv` — village-absolute summer daytime LST (composite median)
+- `data/dlst_overpass_matrix_v4.csv` — per-village per-overpass matched anomalies
+- `data/lst_summer_median_v4.tif` — de-duplicated summer median LST composite (analysis raster)
+- `data/morphology_framed.csv` — Frame-D plan-form metrics (elongation, compactness)
+- `data/built_domain_area.csv` — domain-clipped vs connected-component built-up areas
+- `data/coverage_p*_v4.csv` — per-phase village coverage (`_f0.7` = 700 MHz, `_v4nocap` = no NLOS truncation)
+- `data/coverage_4phase_v4[/_f07].csv` — four-phase village coverage, 2.6 GHz / 700 MHz
+- `data/thermal_zone_coverage.csv` — LST-zone × coverage joint table
+- `data/stations_p*_v4.csv` — per-phase simulated base-station placements
 - `data/village_sample_v2.csv` — candidate list with per-village coordinate verification status
   (`_draft`/`_v1` retained for provenance)
-- `data/lst_scene_manifest.csv` — 36 queried Landsat scenes (3 invalid under the QA chain, 2 near-zero;
-  marked in Appendix Table A2)
-- `data/stats_v3.json` — every in-text statistic, generated by `s41c_stats_v3.py` / `s41c2_spatial_v3.py`
+- `data/lst_scene_manifest.csv` — queried Landsat scenes (invalid/near-zero scenes marked in Appendix)
+- `data/wrs_footprints.json` — WRS-2 frame footprints used for scene selection
+- `data/stats_v4.json` — every in-text statistic, generated by `s41d_stats_v4.py`
+
+## Validation
+
+- `CHECKSUMS.sha256` — SHA-256 of every CSV in `data/` and `tables/`; verify with
+  `sha256sum -c CHECKSUMS.sha256` (Git Bash/Linux) or equivalent.
+- `code/s60_unit_tests.py` — unit tests of the geometry/metric primitives (no downloads required).
+- `code/s61_morph_robustness.py` — end-to-end rank-robustness audit of the morphology chain.
 
 ## Known limitations (quoted from the manuscript)
 
@@ -102,4 +147,5 @@ network estimate. LST is a summer daytime surface measure, not air temperature o
 
 ## Citation
 
-[Paper DOI to be added upon publication.]
+Archived at Zenodo: https://doi.org/10.5281/zenodo.22011592 (concept DOI; resolves to the latest
+version). [Paper DOI to be added upon publication.]

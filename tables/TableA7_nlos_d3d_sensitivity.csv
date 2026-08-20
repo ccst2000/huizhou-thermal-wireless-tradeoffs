@@ -1,0 +1,9 @@
+﻿comparison,cov85_stat,cov95_stat,rsrp_stat,note
+phase 0_0: NLOS cap vs nocap,0.0,0.0,0.0,max abs diff (pct-pts / dB)
+phase 0_1250: NLOS cap vs nocap,0.0,0.0,0.0,max abs diff (pct-pts / dB)
+phase 1250_0: NLOS cap vs nocap,0.0,0.0,0.0,max abs diff (pct-pts / dB)
+phase 1250_1250: NLOS cap vs nocap,0.0,0.0,0.0,max abs diff (pct-pts / dB)
+"phase 0_0: v3 (const-d3D, uncapped) vs v4",0.998,1.0,0.993,rank corr
+"phase 0_1250: v3 (const-d3D, uncapped) vs v4",0.922,1.0,0.998,rank corr
+"phase 1250_0: v3 (const-d3D, uncapped) vs v4",0.952,1.0,0.997,rank corr
+"phase 1250_1250: v3 (const-d3D, uncapped) vs v4",0.996,0.999,0.997,rank corr

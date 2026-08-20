@@ -1,0 +1,745 @@
+{
+ "n_villages": 29,
+ "eirp_dbm": 30.21,
+ "hottest5": [
+  "Yuliang 渔梁 42.8",
+  "Qiankou 潜口 40.1",
+  "Tangyue 棠樾 39.8",
+  "Xiongcun 雄村 39.3",
+  "Zhanqi 瞻淇 38.4"
+ ],
+ "coolest5": [
+  "Mulihong 木梨硔 31.2",
+  "Tachuan 塔川 31.8",
+  "Zuyuan 祖源 32.1",
+  "Xucun 许村 33.4",
+  "Renli 仁里 33.7"
+ ],
+ "n_above40": 2,
+ "n_below34": 6,
+ "lst_range": [
+  31.2,
+  42.8
+ ],
+ "dlst_v1_mean": 2.45,
+ "dlst_v1_range": [
+  0.03,
+  7.69
+ ],
+ "dlst_v1_n": 29,
+ "dlst_v1_n_pos": 29,
+ "dlst_v1_n_sig": 21,
+ "dlst_v2_mean": 5.28,
+ "dlst_v2_range": [
+  0.64,
+  9.62
+ ],
+ "dlst_v2_n": 22,
+ "dlst_v2_n_pos": 22,
+ "dlst_v2_n_sig": 19,
+ "dlst_v3m_mean": 1.27,
+ "dlst_v3m_range": [
+  -0.91,
+  4.19
+ ],
+ "dlst_v3m_n": 29,
+ "dlst_v3m_n_pos": 25,
+ "dlst_v3m_n_sig": 22,
+ "dlst_v3m_neg_villages": [
+  "Tachuan 塔川",
+  "Xucun 许村",
+  "Shitan 石潭",
+  "Huansha 环砂"
+ ],
+ "n_overpasses": 16,
+ "per_phase_headline": {
+  "slope_deg~cov85": {
+   "per_phase": [
+    -0.611,
+    -0.52,
+    -0.681,
+    -0.682
+   ],
+   "rho_4p": -0.851
+  },
+  "forest_ring_pct~cov85": {
+   "per_phase": [
+    -0.613,
+    -0.468,
+    -0.622,
+    -0.426
+   ],
+   "rho_4p": -0.815
+  },
+  "tsvf~cov85": {
+   "per_phase": [
+    0.454,
+    0.412,
+    0.63,
+    0.546
+   ],
+   "rho_4p": 0.706
+  },
+  "relief_m~cov85": {
+   "per_phase": [
+    -0.373,
+    -0.287,
+    -0.574,
+    -0.466
+   ],
+   "rho_4p": -0.657
+  }
+ },
+ "yuliang_cov85_phases": {
+  "p0_0": 71.0,
+  "p0_1250": 76.7,
+  "p1250_0": 99.2,
+  "p1250_1250": 98.1
+ },
+ "yuliang_cov85_4p": 86.2,
+ "zuyuan_tsvf": 0.928,
+ "built_dom_range": [
+  0.0,
+  56.8
+ ],
+ "corr_built_dom_fd": 0.98,
+ "shape_n": 28,
+ "elong_tradeoff": {
+  "elong_lst": {
+   "rho": -0.121,
+   "p": 0.5398
+  },
+  "elong_cov85": {
+   "rho": -0.325,
+   "p": 0.0914
+  }
+ },
+ "headline": {
+  "tsvf~lst_abs": {
+   "rho": 0.652,
+   "p": 0.0001256,
+   "p_ess": 0.002354,
+   "q_ess": 0.0113,
+   "ci95": [
+    0.194,
+    0.875
+   ],
+   "n": 29,
+   "n_eff": 19.2,
+   "survive_ess": true,
+   "partial_rho": 0.416,
+   "partial_q_ess": 0.2549
+  },
+  "tsvf~cov85_4p": {
+   "rho": 0.706,
+   "p": 1.897e-05,
+   "p_ess": 0.001052,
+   "q_ess": 0.0074,
+   "ci95": [
+    0.448,
+    0.885
+   ],
+   "n": 29,
+   "n_eff": 18.0,
+   "survive_ess": true,
+   "partial_rho": 0.595,
+   "partial_q_ess": 0.0667
+  },
+  "forest_ring_pct~cov85_4p": {
+   "rho": -0.815,
+   "p": 2.216e-07,
+   "p_ess": 9.152e-06,
+   "q_ess": 0.0002,
+   "ci95": [
+    -0.883,
+    -0.642
+   ],
+   "n": 27,
+   "n_eff": 20.5,
+   "survive_ess": true,
+   "partial_rho": -0.787,
+   "partial_q_ess": 0.0004
+  },
+  "slope_deg~cov85_4p": {
+   "rho": -0.851,
+   "p": 5.156e-09,
+   "p_ess": 1.935e-06,
+   "q_ess": 0.0001,
+   "ci95": [
+    -0.935,
+    -0.699
+   ],
+   "n": 29,
+   "n_eff": 20.1,
+   "survive_ess": true,
+   "partial_rho": -0.804,
+   "partial_q_ess": 0.0004
+  },
+  "relief_m~dlst_v3m": {
+   "rho": -0.451,
+   "p": 0.014,
+   "p_ess": 0.01651,
+   "q_ess": 0.0466,
+   "ci95": [
+    -0.689,
+    -0.14
+   ],
+   "n": 29,
+   "n_eff": 27.7,
+   "survive_ess": true,
+   "partial_rho": -0.199,
+   "partial_q_ess": 0.5274
+  },
+  "tsvf~rsrp_p10_4p": {
+   "rho": 0.65,
+   "p": 0.0001344,
+   "p_ess": 0.001709,
+   "q_ess": 0.0091,
+   "ci95": [
+    0.298,
+    0.867
+   ],
+   "n": 29,
+   "n_eff": 20.4,
+   "survive_ess": true,
+   "partial_rho": 0.595,
+   "partial_q_ess": 0.0453
+  }
+ },
+ "f1_n": 48,
+ "f1_n_survive": 18,
+ "f1_n_survive_ess": 17,
+ "f2_n": 44,
+ "f2_n_survive": 9,
+ "f2_n_survive_ess": 5,
+ "freq_700mhz": {
+  "cov85": {
+   "spearman": 0.806,
+   "p": 0.0,
+   "mean_26": 94.7,
+   "mean_07": 97.5
+  },
+  "cov95": {
+   "spearman": 0.387,
+   "p": 0.03788,
+   "mean_26": 98.4,
+   "mean_07": 99.8
+  },
+  "rsrp_mean": {
+   "spearman": 0.983,
+   "p": 0.0,
+   "mean_26": -76.6,
+   "mean_07": -70.1
+  },
+  "rsrp_p10": {
+   "spearman": 0.995,
+   "p": 0.0,
+   "mean_26": -80.1,
+   "mean_07": -75.1
+  }
+ },
+ "sens_excl_yuliang": {
+  "built_dom_ha~lst_abs": {
+   "rho": 0.564,
+   "p": 0.0018
+  },
+  "built_dom_ha~dlst_v3m": {
+   "rho": 0.441,
+   "p": 0.0187
+  },
+  "built_dom_ha~cov85_4p": {
+   "rho": 0.563,
+   "p": 0.0018
+  },
+  "built_dom_ha~rsrp_p10_4p": {
+   "rho": 0.46,
+   "p": 0.0138
+  },
+  "elong_fd~lst_abs": {
+   "rho": -0.02,
+   "p": 0.923
+  },
+  "elong_fd~dlst_v3m": {
+   "rho": 0.089,
+   "p": 0.6573
+  },
+  "elong_fd~cov85_4p": {
+   "rho": -0.429,
+   "p": 0.0257
+  },
+  "elong_fd~rsrp_p10_4p": {
+   "rho": -0.365,
+   "p": 0.0613
+  },
+  "compact_fd~lst_abs": {
+   "rho": -0.259,
+   "p": 0.1923
+  },
+  "compact_fd~dlst_v3m": {
+   "rho": -0.126,
+   "p": 0.5309
+  },
+  "compact_fd~cov85_4p": {
+   "rho": -0.342,
+   "p": 0.0811
+  },
+  "compact_fd~rsrp_p10_4p": {
+   "rho": -0.388,
+   "p": 0.0453
+  },
+  "elev_m~lst_abs": {
+   "rho": -0.532,
+   "p": 0.0036
+  },
+  "elev_m~dlst_v3m": {
+   "rho": -0.227,
+   "p": 0.2456
+  },
+  "elev_m~cov85_4p": {
+   "rho": 0.036,
+   "p": 0.8566
+  },
+  "elev_m~rsrp_p10_4p": {
+   "rho": 0.032,
+   "p": 0.8704
+  },
+  "relief_m~lst_abs": {
+   "rho": -0.71,
+   "p": 0.0
+  },
+  "relief_m~dlst_v3m": {
+   "rho": -0.436,
+   "p": 0.0205
+  },
+  "relief_m~cov85_4p": {
+   "rho": -0.695,
+   "p": 0.0
+  },
+  "relief_m~rsrp_p10_4p": {
+   "rho": -0.638,
+   "p": 0.0003
+  },
+  "slope_deg~lst_abs": {
+   "rho": -0.438,
+   "p": 0.0197
+  },
+  "slope_deg~dlst_v3m": {
+   "rho": -0.113,
+   "p": 0.5653
+  },
+  "slope_deg~cov85_4p": {
+   "rho": -0.849,
+   "p": 0.0
+  },
+  "slope_deg~rsrp_p10_4p": {
+   "rho": -0.771,
+   "p": 0.0
+  },
+  "southness~lst_abs": {
+   "rho": -0.079,
+   "p": 0.6901
+  },
+  "southness~dlst_v3m": {
+   "rho": -0.009,
+   "p": 0.9625
+  },
+  "southness~cov85_4p": {
+   "rho": -0.054,
+   "p": 0.7842
+  },
+  "southness~rsrp_p10_4p": {
+   "rho": 0.031,
+   "p": 0.8748
+  },
+  "ns_asym_m~lst_abs": {
+   "rho": -0.254,
+   "p": 0.1921
+  },
+  "ns_asym_m~dlst_v3m": {
+   "rho": -0.172,
+   "p": 0.3802
+  },
+  "ns_asym_m~cov85_4p": {
+   "rho": -0.138,
+   "p": 0.4843
+  },
+  "ns_asym_m~rsrp_p10_4p": {
+   "rho": 0.082,
+   "p": 0.6798
+  },
+  "tsvf~lst_abs": {
+   "rho": 0.62,
+   "p": 0.0004
+  },
+  "tsvf~dlst_v3m": {
+   "rho": 0.254,
+   "p": 0.1916
+  },
+  "tsvf~cov85_4p": {
+   "rho": 0.795,
+   "p": 0.0
+  },
+  "tsvf~rsrp_p10_4p": {
+   "rho": 0.757,
+   "p": 0.0
+  },
+  "forest_ring_pct~lst_abs": {
+   "rho": -0.394,
+   "p": 0.0463
+  },
+  "forest_ring_pct~dlst_v3m": {
+   "rho": -0.019,
+   "p": 0.9273
+  },
+  "forest_ring_pct~cov85_4p": {
+   "rho": -0.832,
+   "p": 0.0
+  },
+  "forest_ring_pct~rsrp_p10_4p": {
+   "rho": -0.805,
+   "p": 0.0
+  },
+  "water_mean_m~lst_abs": {
+   "rho": -0.46,
+   "p": 0.0181
+  },
+  "water_mean_m~dlst_v3m": {
+   "rho": -0.352,
+   "p": 0.0776
+  },
+  "water_mean_m~cov85_4p": {
+   "rho": -0.132,
+   "p": 0.5199
+  },
+  "water_mean_m~rsrp_p10_4p": {
+   "rho": -0.108,
+   "p": 0.6004
+  },
+  "water_min_m~lst_abs": {
+   "rho": -0.517,
+   "p": 0.0069
+  },
+  "water_min_m~dlst_v3m": {
+   "rho": -0.444,
+   "p": 0.0232
+  },
+  "water_min_m~cov85_4p": {
+   "rho": -0.234,
+   "p": 0.25
+  },
+  "water_min_m~rsrp_p10_4p": {
+   "rho": -0.171,
+   "p": 0.4029
+  }
+ },
+ "leave_one_county": {
+  "tsvf~lst_abs": {
+   "full_rho": 0.652,
+   "full_p": 0.00013,
+   "leave_one_out": {
+    "休宁县": {
+     "rho": 0.57,
+     "p": 0.0019,
+     "n": 27
+    },
+    "徽州区": {
+     "rho": 0.598,
+     "p": 0.002,
+     "n": 24
+    },
+    "歙县": {
+     "rho": 0.729,
+     "p": 0.0001,
+     "n": 22
+    },
+    "祁门县": {
+     "rho": 0.625,
+     "p": 0.0006,
+     "n": 26
+    },
+    "绩溪县": {
+     "rho": 0.677,
+     "p": 0.0002,
+     "n": 25
+    },
+    "黟县": {
+     "rho": 0.746,
+     "p": 0.0001,
+     "n": 21
+    }
+   }
+  },
+  "tsvf~cov85_4p": {
+   "full_rho": 0.706,
+   "full_p": 2e-05,
+   "leave_one_out": {
+    "休宁县": {
+     "rho": 0.635,
+     "p": 0.0004,
+     "n": 27
+    },
+    "徽州区": {
+     "rho": 0.689,
+     "p": 0.0002,
+     "n": 24
+    },
+    "歙县": {
+     "rho": 0.814,
+     "p": 0.0,
+     "n": 22
+    },
+    "祁门县": {
+     "rho": 0.692,
+     "p": 0.0001,
+     "n": 26
+    },
+    "绩溪县": {
+     "rho": 0.682,
+     "p": 0.0002,
+     "n": 25
+    },
+    "黟县": {
+     "rho": 0.744,
+     "p": 0.0001,
+     "n": 21
+    }
+   }
+  },
+  "forest_ring_pct~cov85_4p": {
+   "full_rho": -0.815,
+   "full_p": 0.0,
+   "leave_one_out": {
+    "休宁县": {
+     "rho": -0.815,
+     "p": 0.0,
+     "n": 27
+    },
+    "徽州区": {
+     "rho": -0.827,
+     "p": 0.0,
+     "n": 22
+    },
+    "歙县": {
+     "rho": -0.885,
+     "p": 0.0,
+     "n": 20
+    },
+    "祁门县": {
+     "rho": -0.821,
+     "p": 0.0,
+     "n": 24
+    },
+    "绩溪县": {
+     "rho": -0.763,
+     "p": 0.0,
+     "n": 23
+    },
+    "黟县": {
+     "rho": -0.728,
+     "p": 0.0004,
+     "n": 19
+    }
+   }
+  },
+  "slope_deg~cov85_4p": {
+   "full_rho": -0.851,
+   "full_p": 0.0,
+   "leave_one_out": {
+    "休宁县": {
+     "rho": -0.823,
+     "p": 0.0,
+     "n": 27
+    },
+    "徽州区": {
+     "rho": -0.839,
+     "p": 0.0,
+     "n": 24
+    },
+    "歙县": {
+     "rho": -0.842,
+     "p": 0.0,
+     "n": 22
+    },
+    "祁门县": {
+     "rho": -0.85,
+     "p": 0.0,
+     "n": 26
+    },
+    "绩溪县": {
+     "rho": -0.848,
+     "p": 0.0,
+     "n": 25
+    },
+    "黟县": {
+     "rho": -0.897,
+     "p": 0.0,
+     "n": 21
+    }
+   }
+  },
+  "relief_m~dlst_v3m": {
+   "full_rho": -0.451,
+   "full_p": 0.014,
+   "leave_one_out": {
+    "休宁县": {
+     "rho": -0.382,
+     "p": 0.0491,
+     "n": 27
+    },
+    "徽州区": {
+     "rho": -0.526,
+     "p": 0.0083,
+     "n": 24
+    },
+    "歙县": {
+     "rho": -0.46,
+     "p": 0.0312,
+     "n": 22
+    },
+    "祁门县": {
+     "rho": -0.425,
+     "p": 0.0304,
+     "n": 26
+    },
+    "绩溪县": {
+     "rho": -0.452,
+     "p": 0.0232,
+     "n": 25
+    },
+    "黟县": {
+     "rho": -0.461,
+     "p": 0.0356,
+     "n": 21
+    }
+   }
+  },
+  "tsvf~rsrp_p10_4p": {
+   "full_rho": 0.65,
+   "full_p": 0.00013,
+   "leave_one_out": {
+    "休宁县": {
+     "rho": 0.571,
+     "p": 0.0019,
+     "n": 27
+    },
+    "徽州区": {
+     "rho": 0.592,
+     "p": 0.0023,
+     "n": 24
+    },
+    "歙县": {
+     "rho": 0.726,
+     "p": 0.0001,
+     "n": 22
+    },
+    "祁门县": {
+     "rho": 0.633,
+     "p": 0.0005,
+     "n": 26
+    },
+    "绩溪县": {
+     "rho": 0.652,
+     "p": 0.0004,
+     "n": 25
+    },
+    "黟县": {
+     "rho": 0.72,
+     "p": 0.0002,
+     "n": 21
+    }
+   }
+  }
+ },
+ "spatial_moran": {
+  "built_dom_ha": {
+   "I": -0.055,
+   "p": 0.508,
+   "n": 29
+  },
+  "elong_fd": {
+   "I": -0.047,
+   "p": 0.522,
+   "n": 28
+  },
+  "compact_fd": {
+   "I": 0.052,
+   "p": 0.468,
+   "n": 28
+  },
+  "elev_m": {
+   "I": 0.234,
+   "p": 0.001,
+   "n": 29
+  },
+  "relief_m": {
+   "I": 0.065,
+   "p": 0.394,
+   "n": 29
+  },
+  "slope_deg": {
+   "I": 0.107,
+   "p": 0.089,
+   "n": 29
+  },
+  "southness": {
+   "I": -0.055,
+   "p": 0.473,
+   "n": 29
+  },
+  "ns_asym_m": {
+   "I": -0.067,
+   "p": 0.263,
+   "n": 29
+  },
+  "tsvf": {
+   "I": 0.198,
+   "p": 0.003,
+   "n": 29
+  },
+  "forest_ring_pct": {
+   "I": 0.139,
+   "p": 0.038,
+   "n": 27
+  },
+  "water_mean_m": {
+   "I": -0.04,
+   "p": 0.665,
+   "n": 27
+  },
+  "water_min_m": {
+   "I": -0.077,
+   "p": 0.304,
+   "n": 27
+  },
+  "lst_abs": {
+   "I": 0.177,
+   "p": 0.004,
+   "n": 29
+  },
+  "dlst_v3m": {
+   "I": -0.023,
+   "p": 0.781,
+   "n": 29
+  },
+  "cov85_4p": {
+   "I": 0.225,
+   "p": 0.005,
+   "n": 29
+  },
+  "rsrp_p10_4p": {
+   "I": 0.124,
+   "p": 0.055,
+   "n": 29
+  }
+ },
+ "cov85_phase_sd_mean": 7.02,
+ "cov85_phase_sd_max": 34.9,
+ "cov85_phase_pairwise_rho": [
+  0.569,
+  0.471
+ ],
+ "rsrp_phase_pairwise_rho": [
+  0.095,
+  -0.087
+ ]
+}
